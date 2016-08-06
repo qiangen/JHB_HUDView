@@ -5,6 +5,7 @@
 /***简介***/<br>
 这是一款在swift2.2和目标设备8.2及更新的环境最为简单可行的实现并展示进程挡板(HUD)的插件
 <br>
+HudType2.gif
 <br>
 /****详情****/<br>
 这是一款用swift语言编写,可用于展示进程信息及进程的,与MBProgressHUD和SVProgressHUD基础功能相似的轻量级插件,可以迅速实现控制器内展示你所需要的挡板效果.<br>
@@ -38,10 +39,10 @@ First,Basis:
 <three>Language Version:Swif2.2 and higher<br>
 <br>
 Second,There are several methods can be used:<br>
-<one>Show the progress-view:Just load and show the ActivityIndicatorView.<br>
-<two>Show the progress-view and messages: Under the premise of the show of ActivityIndicatorView,The you can decide a piece of message that need displayed by yourself ,But limited one-line.<br>
-<three>Just show message(one-line):Just show one-line message that you want to display ,the remainder will be omitted.<br>
-<four>Just show message(multi-line):Just show message that you want to display,ti could be multiple-lines,limited width ,without limited height.<br>
+<1>Show the progress-view:Just load and show the ActivityIndicatorView.<br>
+<2>Show the progress-view and messages: Under the premise of the show of ActivityIndicatorView,The you can decide a piece of message that need displayed by yourself ,But limited one-line.<br>
+<3>Just show message(one-line):Just show one-line message that you want to display ,the remainder will be omitted.<br>
+<4>Just show message(multi-line):Just show message that you want to display,ti could be multiple-lines,limited width ,without limited height.<br>
 <br>
 Third,The effect of show:<br>
 At present ,the pop-effect of HUD is from bottom to top and Gradually appear,the quit-effect of HUD is from bottom to top at current-position and Gradually disaappear<br>
