@@ -5,7 +5,7 @@
 /***简介***/<br>
 这是一款在swift2.2和目标设备8.2及更新的环境最为简单可行的实现并展示进程挡板(HUD)的插件
 <br>
-HudType2.gif
+ <img src="HudType2.gif">
 <br>
 /****详情****/<br>
 这是一款用swift语言编写,可用于展示进程信息及进程的,与MBProgressHUD和SVProgressHUD基础功能相似的轻量级插件,可以迅速实现控制器内展示你所需要的挡板效果.<br>
