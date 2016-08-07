@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
   s.platform      = :ios, "8.2"
   s.author        = { "Minion" => '1050848821@qq.com' }
   s.source        = { :git => 'https://github.com/BruceFight/JHB_HUDView.git', :tag =>  s.version }
-  s.source_files  = 'JHB_HUDView/*'
+  s.source_files  = "JHB_HUDView/*"
   s.requires_arc  = true
 end
