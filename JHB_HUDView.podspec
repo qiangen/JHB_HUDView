@@ -24,7 +24,8 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "This is a plugin to show your application is in-progress and There are some different relizations offerred! You can choose the related-one and copy it to your projectfile ,then use it!"
+  s.description  = << DESC
+ "This is a plugin to show your application is in-progress and There are some different relizations offerred! You can choose the related-one and copy it to your projectfile ,then use it!"
 
   s.homepage     = "https://github.com/BruceFight/JHB_HUDView"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
