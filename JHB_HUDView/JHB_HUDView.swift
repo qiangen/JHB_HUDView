@@ -5,6 +5,7 @@
 /********************** JHB_HUDView.swift ***********************/
 
 import UIKit
+import Foundation
 
 class JHB_HUDView: UIView {
     // MARK: parameters
@@ -216,4 +217,39 @@ class JHB_HUDView: UIView {
 
     }
 
+}
+/*****❤️UIViewController类扩展******/
+var hud = JHB_HUDView()
+
+extension UIViewController{
+    
+    /***************************❤️显示进程****************************/
+    func showProgress(){
+        let HUD = JHB_HUDView.init()
+        hud = HUD
+        HUD.showProgress()
+    }
+    
+    /*************************❤️显示进程及信息***************************/
+    func showProgressMsg(msg:NSString) {
+        let msgHUD = JHB_HUDView.init()
+        hud = msgHUD
+        msgHUD.showProgressMsgs(msg)
+    }
+    /********************❤️显示单行信息(自行执行Hide)********************/
+    func showMsg(msg:NSString) {
+        let msgHUD = JHB_HUDView.init()
+        hud = msgHUD
+        msgHUD.show(msg)
+    }
+    /********************❤️显示多行信息(自行执行Hide)********************/
+    func showMsgMultiLine(msg:NSString, coreInSet: CGFloat, labelInSet: CGFloat, delay: Double) {
+        let msgHUD = JHB_HUDView.init()
+        hud = msgHUD
+        msgHUD.showMultiLine(msg, coreInSet: coreInSet, labelInSet: labelInSet, delay: delay)
+    }
+    /***********************❤️HIDE隐藏并移除*************************/
+    func hideProgress() {
+        hud.hideProgress()
+    }
 }
