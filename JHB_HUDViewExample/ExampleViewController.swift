@@ -66,21 +66,21 @@ class ExampleViewController: UIViewController {
     }
 // MARK: Event
     func justshowcircle(sender:UIButton){
-        self.showProgress()
+        JHB_HUDView.showProgress()
         self.pretendReloadData()
     }
     
     func hudBtnClicked(sender:UIButton) {
-        self.showMsgMultiLine("你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala",coreInSet: 50,labelInSet: 1500, delay:1)
+        JHB_HUDView.showMsgMultiLine("你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala你看不见我!CoderBala",coreInSet: 50,labelInSet: 1500, delay:1)
         
     }
     
     func justshowAlineMsg(sender:UIButton) {
-        self.showMsg("你看不见我!CoderBala")
+        JHB_HUDView.showMsg("你看不见我!CoderBala")
     }
     
     func netAskBtnClicked(sender:UIButton) {
-        self.showProgressMsg("加载中...")
+        JHB_HUDView.showProgressMsg("加载中...")
         self.pretendReloadData()
     }
     
@@ -93,7 +93,7 @@ class ExampleViewController: UIViewController {
     func getAskResult() {
         askTime += 1
         self.stateLabel.text = "第\(askTime)次请求"
-        self.hideProgress()
+        JHB_HUDView.hideProgress()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

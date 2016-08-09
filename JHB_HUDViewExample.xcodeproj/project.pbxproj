@@ -15,7 +15,6 @@
 		B274ECC51D581BC400EEB906 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B274ECC31D581BC400EEB906 /* LaunchScreen.storyboard */; };
 		B274ECD01D581C9800EEB906 /* JHB_HUDProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274ECCD1D581C9800EEB906 /* JHB_HUDProgressView.swift */; };
 		B274ECD11D581C9800EEB906 /* JHB_HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274ECCE1D581C9800EEB906 /* JHB_HUDView.swift */; };
-		B274ECD21D581C9800EEB906 /* JHB_HUDViewControllerEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274ECCF1D581C9800EEB906 /* JHB_HUDViewControllerEX.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		B274ECC61D581BC400EEB906 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B274ECCD1D581C9800EEB906 /* JHB_HUDProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDProgressView.swift; sourceTree = "<group>"; };
 		B274ECCE1D581C9800EEB906 /* JHB_HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDView.swift; sourceTree = "<group>"; };
-		B274ECCF1D581C9800EEB906 /* JHB_HUDViewControllerEX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDViewControllerEX.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +77,6 @@
 			children = (
 				B274ECCD1D581C9800EEB906 /* JHB_HUDProgressView.swift */,
 				B274ECCE1D581C9800EEB906 /* JHB_HUDView.swift */,
-				B274ECCF1D581C9800EEB906 /* JHB_HUDViewControllerEX.swift */,
 			);
 			path = JHB_HUDView;
 			sourceTree = "<group>";
@@ -155,7 +152,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B274ECD21D581C9800EEB906 /* JHB_HUDViewControllerEX.swift in Sources */,
 				B274ECD11D581C9800EEB906 /* JHB_HUDView.swift in Sources */,
 				B274ECD01D581C9800EEB906 /* JHB_HUDProgressView.swift in Sources */,
 				B274ECBA1D581BC400EEB906 /* ExampleViewController.swift in Sources */,
@@ -314,6 +310,7 @@
 				B274ECCB1D581BC400EEB906 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
