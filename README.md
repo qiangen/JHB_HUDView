@@ -7,20 +7,20 @@
 <br>
 /***Pre实现效果gif(the gif of effect)***/<br>
 ❤️There are 4 types of of pre-SDK can reach out!<br>
-<img src="AllHudType.gif"><br>
+<img src="JHB_DemoGIFs/AllHudType.gif"><br>
  <br>
 <br>
 /***New实现效果gif(the gif of effect)***/<br>
 ❤️After days work ,The one had been extented many Show-effect types,And there are main-parts of the effects<br>
 1⃣️TurnCircleType(Just show progress-indicator-view)<br>
-<img src="TurnCircleType.gif"><br>
+<img src="JHB_DemoGIFs/TurnCircleType.gif"><br>
 <br>
 2⃣️TurnCircleAndMsgType(Show progress-indicator-view with some messages)<br>
-<img src="TurnCircleAndMsgType.gif"><br>
+<img src="JHB_DemoGIFs/TurnCircleAndMsgType.gif"><br>
 3⃣️SingleMsgType(Show no progress-indicator-view with single message)<br>
-<img src="SingleMsgType.gif"><br>
+<img src="JHB_DemoGIFs/SingleMsgType.gif"><br>
 4⃣️MultiMsgType(Show no progress-indicator-view with multi-lines messages)<br>
-<img src="MultiMsgType.gif"><br>
+<img src="JHB_DemoGIFs/MultiMsgType.gif"><br>
 <br>
 /****详情****/<br>
 这是一款用swift语言编写,可用于展示进程信息及进程的,与MBProgressHUD和SVProgressHUD基础功能相似的轻量级插件,可以迅速实现控制器内展示你所需要的挡板效果.<br>
