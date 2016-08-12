@@ -537,6 +537,10 @@ public extension JHB_HUDManager{
         }else if msgLabelWidth + 2*kMargin <= 80 {
             msgLabelWidth = 80
         }
+        
+        self.coreView.msgLabelWidth = msgLabelWidth + 20
+        self.coreView.msgLabel.text = msgs as String
+        
         NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUD_haveMsg", object: nil)
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 80) / 2,msgLabelWidth + 2*kMargin , 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 60)
@@ -547,9 +551,6 @@ public extension JHB_HUDManager{
             self.coreView.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
             self.setNeedsDisplay()
         }
-        
-        self.coreView.msgLabelWidth = msgLabelWidth
-        self.coreView.msgLabel.text = msgs as String
     }
     
     public func showProgressMsgsWithType(msgs:NSString, HudType:HUDType) {// NEW
@@ -653,6 +654,9 @@ public extension JHB_HUDManager{
         }else if msgLabelWidth + 2*kMargin <= 80 {
             msgLabelWidth = 80
         }
+        self.coreView.msgLabelWidth = msgLabelWidth + 20
+        self.coreView.msgLabel.text = msgs as String
+        
         NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUD_haveMsg", object: nil)
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 80) / 2,msgLabelWidth + 2*kMargin , 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + value)
@@ -663,9 +667,6 @@ public extension JHB_HUDManager{
             self.coreView.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
             self.setNeedsDisplay()
         }
-        
-        self.coreView.msgLabelWidth = msgLabelWidth
-        self.coreView.msgLabel.text = msgs as String
     }
     // 3⃣️左右相关
     private  func EffectShowProgressMsgsAboutLeftAndRight(msgs:NSString,type:HUDType){
@@ -692,6 +693,9 @@ public extension JHB_HUDManager{
         }else if msgLabelWidth + 2*kMargin <= 80 {
             msgLabelWidth = 80
         }
+        self.coreView.msgLabelWidth = msgLabelWidth + 20
+        self.coreView.msgLabel.text = msgs as String
+        
         NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUD_haveMsg", object: nil)
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 80) / 2,msgLabelWidth + 2*kMargin , 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2 + value, SCREEN_HEIGHT / 2)
@@ -702,10 +706,8 @@ public extension JHB_HUDManager{
             self.coreView.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
             self.setNeedsDisplay()
         }
-        
-        self.coreView.msgLabelWidth = msgLabelWidth
-        self.coreView.msgLabel.text = msgs as String
     }
+    
     // 4⃣️内外相关
     private  func EffectShowProgressMsgsAboutInsideAndOutside(msgs:NSString,type:HUDType){
         
@@ -726,7 +728,7 @@ public extension JHB_HUDManager{
         switch type {
         case .kHUDTypeScaleFromInsideToOutside:
             kScaleValue = 1.05
-            iniWidthValue = CoreWidth/kScaleValue
+            iniWidthValue = (CoreWidth + 10)/kScaleValue
             iniHeightValue = 80/kScaleValue
             break
         case .kHUDTypeScaleFromOutsideToInside:
@@ -1090,7 +1092,7 @@ public extension JHB_HUDManager{
         UIApplication.sharedApplication().keyWindow?.addSubview(self)
         
         
-        self.coreView.msgLabelWidth = msgLabelWidth-20
+        self.coreView.msgLabelWidth = msgLabelWidth + 10
         self.coreView.msgLabelHeight = msgLabelHeight
         self.coreView.kContent = msgs as String
         NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUD_onlyAMsgShow", object: nil)
