@@ -18,7 +18,7 @@ class ExampleViewController: UIViewController {
     override func viewDidLoad() {
         let version1 = UILabel.init()
         version1.frame = CGRectMake(0, 20, SCREEN_WIDTH, 50)
-        version1.text = "PreVersion-1:默认自下而上效果"
+        version1.text = "PreVersion:默认自下而上效果"
         version1.textColor = UIColor.redColor()
         version1.sizeToFit()
         self.view.addSubview(version1)
