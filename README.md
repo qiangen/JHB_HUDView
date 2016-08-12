@@ -5,10 +5,22 @@
 /***简介***/<br>
 这是一款在swift2.2和目标设备8.2及更新的环境最为简单可行的实现并展示进程挡板(HUD)的插件
 <br>
-/***实现效果gif(the gif of effect)***/<br>
-❤️There are 4 types of current SDK can reach!<br>
+/***Pre实现效果gif(the gif of effect)***/<br>
+❤️There are 4 types of of pre-SDK can reach out!<br>
 <img src="AllHudType.gif"><br>
  <br>
+<br>
+/***New实现效果gif(the gif of effect)***/<br>
+❤️After days work ,The one had been extented many Show-effect types,And there are main-parts of the effects<br>
+1⃣️TurnCircleType(Just show progress-indicator-view)<br>
+<img src="TurnCircleType.gif"><br>
+<br>
+2⃣️TurnCircleAndMsgType(Show progress-indicator-view with some messages)<br>
+<img src="TurnCircleAndMsgType.gif"><br>
+3⃣️SingleMsgType(Show no progress-indicator-view with single message)<br>
+<img src="SingleMsgType.gif"><br>
+4⃣️MultiMsgType(Show no progress-indicator-view with multi-lines messages)<br>
+<img src="MultiMsgType.gif"><br>
 <br>
 /****详情****/<br>
 这是一款用swift语言编写,可用于展示进程信息及进程的,与MBProgressHUD和SVProgressHUD基础功能相似的轻量级插件,可以迅速实现控制器内展示你所需要的挡板效果.<br>
