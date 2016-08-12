@@ -23,57 +23,57 @@ public enum HUDType {
     case kHUDTypeScaleFromOutsideToInside/*从外部向内部缩小*/
 }
 
-var hud = JHB_HUD()
+var hud = JHB_HUDManager()
 public class JHB_HUDView:NSObject{
     
     /************************❤️显示进程***************************/
     public class func showProgress(){// DEFAULT
-        let HUD = JHB_HUD.init()
+        let HUD = JHB_HUDManager.init()
         hud = HUD
         HUD.showProgress()
     }
     /**********************❤️显示进程+HUDType**********************/
     public class func showProgressWithType(HudType:HUDType){// DEFAULT
-        let HUD = JHB_HUD.init()
+        let HUD = JHB_HUDManager.init()
         hud = HUD
         HUD.showProgressWithType(HudType)
     }
     
     /***********************❤️显示进程及信息***************************/
     public class func showProgressMsg(msg:NSString) {// DEFAULT
-        let msgHUD = JHB_HUD.init()
+        let msgHUD = JHB_HUDManager.init()
         hud = msgHUD
         msgHUD.showProgressMsgs(msg)
     }
     /*********************❤️显示进程及信息+HUDType**********************/
     public class func showProgressMsgWithType(msg:NSString,HudType:HUDType){// DEFAULT
-        let HUD = JHB_HUD.init()
+        let HUD = JHB_HUDManager.init()
         hud = HUD
         HUD.showProgressMsgsWithType(msg, HudType: HudType)
     }
     
     /********************❤️显示单行信息(自行执行Hide)********************/
     public class func showMsg(msg:NSString) {// DEFAULT
-        let msgHUD = JHB_HUD.init()
+        let msgHUD = JHB_HUDManager.init()
         hud = msgHUD
         msgHUD.show(msg)
     }
     /*****************❤️显示单行信息(自行执行Hide)+HUDType****************/
     public class func showMsgWithType(msg:NSString,HudType:HUDType) {// DEFAULT
-        let msgHUD = JHB_HUD.init()
+        let msgHUD = JHB_HUDManager.init()
         hud = msgHUD
         msgHUD.showWithType(msg, HudType: HudType)
     }
     
     /********************❤️显示多行信息(自行执行Hide)********************/
     public class func showMsgMultiLine(msg:NSString, coreInSet: CGFloat, labelInSet: CGFloat, delay: Double) {// DEFAULT
-        let msgHUD = JHB_HUD.init()
+        let msgHUD = JHB_HUDManager.init()
         hud = msgHUD
         msgHUD.showMultiLine(msg, coreInSet: coreInSet, labelInSet: labelInSet, delay: delay)
     }
     /****************❤️显示多行信息(自行执行Hide)+HUDType****************/
     public class func showMsgMultiLineWithType(msg:NSString, coreInSet: CGFloat, labelInSet: CGFloat, delay: Double ,HudType:HUDType) {// DEFAULT
-        let msgHUD = JHB_HUD.init()
+        let msgHUD = JHB_HUDManager.init()
         hud = msgHUD
         msgHUD.showMultiLineWithType(msg, coreInSet: coreInSet, labelInSet: labelInSet, delay: delay, HudType: HudType)
     }

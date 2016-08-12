@@ -1,12 +1,12 @@
-/********************** JHB_HUDView.swift ***********************/
+/******************** JHB_HUDManager.swift **********************/
 /*******  (JHB)  ************************************************/
-/*******  Created by Leon_pan on 16/6/12. ***********************/
+/*******  Created by Leon_pan on 16/8/12. ***********************/
 /*******  Copyright © 2016年 CoderBala. All rights reserved.*****/
-/********************** JHB_HUDView.swift ***********************/
+/******************** JHB_HUDManager.swift **********************/
 
 import UIKit
 
-public class JHB_HUD: UIView {
+public class JHB_HUDManager: UIView {
     // MARK: parameters
     let SCREEN_WIDTH  = UIScreen.mainScreen().bounds.size.width
     let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.size.height
@@ -60,7 +60,7 @@ public class JHB_HUD: UIView {
             self.coreView.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
             self.setNeedsDisplay()
         }) { (true) in
-            self.performSelector(#selector(JHB_HUD.selfCoreViewRemoveFromSuperview), withObject: self, afterDelay: delay)
+            self.performSelector(#selector(JHB_HUDManager.selfCoreViewRemoveFromSuperview), withObject: self, afterDelay: delay)
         }
     }
     
@@ -348,7 +348,7 @@ public class JHB_HUD: UIView {
     
 }
 
-public extension JHB_HUD{
+public extension JHB_HUDManager{
     
     // MARK: - 1⃣️单纯显示进程中(Just Show In Progress❤️Type:FromBottomType)
     public func showProgress() {// DEFAULT
@@ -1062,7 +1062,7 @@ public extension JHB_HUD{
             self.coreView.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
             self.setNeedsDisplay()
         }) { (true) in
-            self.performSelector(#selector(JHB_HUD.selfCoreViewRemoveFromSuperview), withObject: self, afterDelay: delay)
+            self.performSelector(#selector(JHB_HUDManager.selfCoreViewRemoveFromSuperview), withObject: self, afterDelay: delay)
         }
         
     }
@@ -1300,14 +1300,14 @@ public extension JHB_HUD{
             self.coreView.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
             self.setNeedsDisplay()
         }) { (true) in
-            self.performSelector(#selector(JHB_HUD.selfCoreViewRemoveFromSuperview), withObject: self, afterDelay: 1.5)
+            self.performSelector(#selector(JHB_HUDManager.selfCoreViewRemoveFromSuperview), withObject: self, afterDelay: 1.5)
         }
         
     }
     
     // MARK: - 隐藏(Hidden❤️Type:dissolveToTop)
     public func hideProgress() {// DEFAULT
-        self.performSelector(#selector(JHB_HUD.hideWithAnimation), withObject: self, afterDelay: 0.6)
+        self.performSelector(#selector(JHB_HUDManager.hideWithAnimation), withObject: self, afterDelay: 0.6)
     }
     private func hideHud() {
         self.hideProgress()
