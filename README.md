@@ -3,11 +3,11 @@
 <h1 align="center">中文介绍✅</h1>
 <br>
 <br>
-&nbsp&nbsp<h2 align="left">简介</h2><br>
+<h2 align="left">简介</h2><br>
 这是一款在swift2.2和目标设备8.2及更新的环境最为简单可行的实现并展示进程挡板(HUD)的插件
 <br>
 <br>
-<h2 align="left">&nbsp&nbsp详情</h2><br>
+<h2 align="left">详情</h2><br>
 这是一款用swift语言编写,可用于展示进程信息及进程的,与MBProgressHUD和SVProgressHUD基础功能相似的轻量级插件,可以迅速实现控制器内展示你所需要的挡板效果.<br>
 <h3 align="left">一,基本:</h3><br>
 <1>开发环境:Xcode7.2 及以上<br>
@@ -34,11 +34,11 @@
 <h1 align="center">The Introduction Of English✅</h1>
 <br>
 <br>
-<h2 align="left">&nbsp&nbspBrief</h2><br>
+<h2 align="left">Brief</h2><br>
 The Easiest Way To Realize Showing Progress HUD With Swift2.2 And Deployment Target8.2 And Latter <br>
 <br>
 <br>
-<h2 align="left">&nbsp&nbspDetials</h2><br>
+<h2 align="left">Detials</h2><br>
 This is a Lightweight plug-in edited by Swift can show progress-effect and progress-messages,that is similar to MBProgressHUD and SVProgressHUD's basis functions .It can show the HUD-effect that you need in your Controllers rapidly!<br>
 <br>
 <br>
@@ -88,6 +88,8 @@ There are the types of Diy-Image, also are the new types I expended recently .<b
 <img src="JHB_DemoGIFs/Diy-ImagePart.gif"><br>
 <br>
 <br>
-
-
+<hr />
+<br>
+<br>
+<h1 align="center">Thanks For Your Support And Reading</h1>
 <br>
