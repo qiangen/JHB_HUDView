@@ -53,7 +53,7 @@ class ExampleRegularController: UITableViewController {
         }else if indexPath.row == 1{
             cell.textLabel?.text = "2⃣️JHB_HUDView 显示进程和信息(转圈圈还有字~)"
         }else if indexPath.row == 2{
-            cell.textLabel?.text = "3⃣️JHB_HUDView 显示当行信息~"
+            cell.textLabel?.text = "3⃣️JHB_HUDView 显示单行信息~"
         }else if indexPath.row == 3{
             cell.textLabel?.text = "4⃣️JHB_HUDView 显示多行信息~"
         }
