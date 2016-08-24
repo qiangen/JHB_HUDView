@@ -3,7 +3,7 @@
 <h1 align="center">中文介绍✅</h1>
 <br>
 <br>
-<h2 align="left">&nbsp&nbsp简介</h2><br>
+&nbsp&nbsp<h2 align="left">简介</h2><br>
 这是一款在swift2.2和目标设备8.2及更新的环境最为简单可行的实现并展示进程挡板(HUD)的插件
 <br>
 <br>
