@@ -157,8 +157,8 @@ class JHB_HUDDiyProgressView: UIView {
             //旋转角度
             rotationAnimation.toValue = NSNumber.init(double: M_PI)
             //每次旋转的时间（单位秒）
-            rotationAnimation.duration = self.diySpeed;
-            rotationAnimation.cumulative = true;
+            rotationAnimation.duration = self.diySpeed
+            rotationAnimation.cumulative = true
             //重复旋转的次数，如果你想要无数次，那么设置成MAXFLOAT
             rotationAnimation.repeatCount = MAXFLOAT
             if ifChangeImgView == true {
@@ -173,8 +173,8 @@ class JHB_HUDDiyProgressView: UIView {
             //旋转角度
             rotationAnimation.toValue = NSNumber.init(double: M_PI)
             //每次旋转的时间（单位秒）
-            rotationAnimation.duration = self.diySpeed;
-            rotationAnimation.cumulative = true;
+            rotationAnimation.duration = self.diySpeed
+            rotationAnimation.cumulative = true
             //重复旋转的次数，如果你想要无数次，那么设置成MAXFLOAT
             rotationAnimation.repeatCount = MAXFLOAT
             if ifChangeImgView == true {
@@ -197,7 +197,7 @@ class JHB_HUDDiyProgressView: UIView {
              shakeAnimation.duration = self.diySpeed
              shakeAnimation.repeatCount = MAXFLOAT
              // currentTx + 8, currentTx - 8, currentTx + 5, currentTx - 5,currentTx + 2, currentTx - 2, currentTx
-             shakeAnimation.values = [currentTx,currentTx + 10,currentTx, currentTx - 10,currentTx,currentTx + 10,currentTx,currentTx - 10];
+             shakeAnimation.values = [currentTx,currentTx + 10,currentTx, currentTx - 10,currentTx,currentTx + 10,currentTx,currentTx - 10]
              shakeAnimation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear)
              if ifChangeImgView == true {
                 self.diySpareImageView.layer.addAnimation(shakeAnimation, forKey: "transform.translation.x")

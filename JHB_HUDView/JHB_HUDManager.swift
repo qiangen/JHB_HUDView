@@ -13,9 +13,9 @@ public class JHB_HUDManager: UIView {
     let SCREEN_WIDTH  = UIScreen.mainScreen().bounds.size.width
     let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.size.height
     /*透明背景*//*Clear Background*/
-    var bgClearView   = UIView();
+    var bgClearView   = UIView()
     /*核心视图*//*Core View Part*/
-    var coreView      = JHB_HUDProgressView();
+    var coreView      = JHB_HUDProgressView()
     /*核心视图尺寸*//*The Frame Of Core View Part*/
     var coreViewRect  = CGRect()
     /*核心视图内部统一间隔*//*The Uniformed Margin Inside Core View Part*/
@@ -30,21 +30,27 @@ public class JHB_HUDManager: UIView {
     // MARK: - Interface
     override init(frame: CGRect) {
         super.init(frame: UIScreen.mainScreen().bounds)
+        self.setUp()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setUp()
+    }
+    
+    func setUp() {
         self.setSubViews()
-        self.addSubview(self.bgClearView);
-        self.addSubview(self.coreView);
+        self.addSubview(self.bgClearView)
+        self.addSubview(self.coreView)
         self.registerDeviceOrientationNotification()
         
         PreOrientation = UIDevice.currentDevice().orientation
         InitOrientation = UIDevice.currentDevice().orientation
-
+        
         if PreOrientation != .Portrait {
             NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUDTopVcCannotRotated", object: self.PreOrientation.hashValue, userInfo: nil)
         }
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
     }
     
     func setSubViews() {
@@ -53,7 +59,7 @@ public class JHB_HUDManager: UIView {
         
         self.coreView = JHB_HUDProgressView.init()
         self.coreView.sizeToFit()
-        self.coreView.layer.cornerRadius = 10;
+        self.coreView.layer.cornerRadius = 10
         self.coreView.layer.masksToBounds = true
         self.coreView.backgroundColor = UIColor.blackColor()
         self.coreView.alpha = 0
@@ -950,10 +956,10 @@ public extension JHB_HUDManager{
         
         switch type {
         case .kHUDTypeShowImmediately:
-            self.coreView.alpha = 1;
+            self.coreView.alpha = 1
             break
         case .kHUDTypeShowSlightly:
-            self.coreView.alpha = 0;
+            self.coreView.alpha = 0
             break
         default:
             
