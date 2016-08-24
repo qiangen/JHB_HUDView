@@ -99,7 +99,6 @@ class JHB_HUDProgressView: UIView {
     }
     func resetSubViewsForJHB_HUD_haveMsg() {
         self.msgLabel.frame = CGRectMake(0, CGRectGetMaxY(self.actView.bounds), msgLabelWidth + 2 * kMargin, 18)
-        
     }
     func resetSubViewsForJHB_HUD_haveMsgWithScale(noti:NSNotification){
         let obValue = noti.object as! CGFloat

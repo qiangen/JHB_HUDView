@@ -7,29 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B268CE3A1D5DBEC600FA7281 /* JHB_HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B268CE391D5DBEC600FA7281 /* JHB_HUDManager.swift */; };
-		B274ECB81D581BC400EEB906 /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274ECB71D581BC400EEB906 /* ExampleAppDelegate.swift */; };
-		B274ECBA1D581BC400EEB906 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274ECB91D581BC400EEB906 /* ExampleViewController.swift */; };
+		B2224D161D6D502B00EA3F5F /* JHB_HUDDiyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D101D6D502B00EA3F5F /* JHB_HUDDiyManager.swift */; };
+		B2224D171D6D502B00EA3F5F /* JHB_HUDDiyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D111D6D502B00EA3F5F /* JHB_HUDDiyProgressView.swift */; };
+		B2224D181D6D502B00EA3F5F /* JHB_HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D121D6D502B00EA3F5F /* JHB_HUDManager.swift */; };
+		B2224D191D6D502B00EA3F5F /* JHB_HUDProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D131D6D502B00EA3F5F /* JHB_HUDProgressView.swift */; };
+		B2224D1A1D6D502B00EA3F5F /* JHB_HUDTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D141D6D502B00EA3F5F /* JHB_HUDTopViewController.swift */; };
+		B2224D1B1D6D502B00EA3F5F /* JHB_HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D151D6D502B00EA3F5F /* JHB_HUDView.swift */; };
+		B2224D301D6D504F00EA3F5F /* dropdown_anim_loading1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2224D1D1D6D504F00EA3F5F /* dropdown_anim_loading1@2x.png */; };
+		B2224D311D6D504F00EA3F5F /* dropdown_anim_loading2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2224D1E1D6D504F00EA3F5F /* dropdown_anim_loading2@2x.png */; };
+		B2224D321D6D504F00EA3F5F /* dropdown_anim_loading3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2224D1F1D6D504F00EA3F5F /* dropdown_anim_loading3@2x.png */; };
+		B2224D331D6D504F00EA3F5F /* dropdown_anim_loading4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2224D201D6D504F00EA3F5F /* dropdown_anim_loading4@2x.png */; };
+		B2224D341D6D504F00EA3F5F /* dropdown_anim_loading5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2224D211D6D504F00EA3F5F /* dropdown_anim_loading5@2x.png */; };
+		B2224D351D6D504F00EA3F5F /* dropdown_anim_loading6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2224D221D6D504F00EA3F5F /* dropdown_anim_loading6@2x.png */; };
+		B2224D361D6D504F00EA3F5F /* dropdown_anim_loading7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2224D231D6D504F00EA3F5F /* dropdown_anim_loading7@2x.png */; };
+		B2224D371D6D504F00EA3F5F /* dropdown_anim_loading8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2224D241D6D504F00EA3F5F /* dropdown_anim_loading8@2x.png */; };
+		B2224D381D6D504F00EA3F5F /* TaiChi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2224D251D6D504F00EA3F5F /* TaiChi@2x.png */; };
+		B2224D391D6D504F00EA3F5F /* ExampleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D271D6D504F00EA3F5F /* ExampleAppDelegate.swift */; };
+		B2224D3A1D6D504F00EA3F5F /* ExampleMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D281D6D504F00EA3F5F /* ExampleMainController.swift */; };
+		B2224D3B1D6D504F00EA3F5F /* ExampleNaviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D291D6D504F00EA3F5F /* ExampleNaviController.swift */; };
+		B2224D3C1D6D504F00EA3F5F /* ExampleDiyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D2B1D6D504F00EA3F5F /* ExampleDiyController.swift */; };
+		B2224D3D1D6D504F00EA3F5F /* ExampleDiyDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D2C1D6D504F00EA3F5F /* ExampleDiyDetailController.swift */; };
+		B2224D3E1D6D504F00EA3F5F /* ExampleDiyNDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D2D1D6D504F00EA3F5F /* ExampleDiyNDetailController.swift */; };
+		B2224D3F1D6D504F00EA3F5F /* ExampleRegularController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D2E1D6D504F00EA3F5F /* ExampleRegularController.swift */; };
+		B2224D401D6D504F00EA3F5F /* ExampleRegularDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2224D2F1D6D504F00EA3F5F /* ExampleRegularDetailController.swift */; };
 		B274ECBD1D581BC400EEB906 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B274ECBB1D581BC400EEB906 /* Main.storyboard */; };
 		B274ECC01D581BC400EEB906 /* JHB_HUDViewExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B274ECBE1D581BC400EEB906 /* JHB_HUDViewExample.xcdatamodeld */; };
 		B274ECC21D581BC400EEB906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B274ECC11D581BC400EEB906 /* Assets.xcassets */; };
 		B274ECC51D581BC400EEB906 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B274ECC31D581BC400EEB906 /* LaunchScreen.storyboard */; };
-		B274ECD01D581C9800EEB906 /* JHB_HUDProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274ECCD1D581C9800EEB906 /* JHB_HUDProgressView.swift */; };
-		B274ECD11D581C9800EEB906 /* JHB_HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274ECCE1D581C9800EEB906 /* JHB_HUDView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B268CE391D5DBEC600FA7281 /* JHB_HUDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDManager.swift; sourceTree = "<group>"; };
+		B2224D101D6D502B00EA3F5F /* JHB_HUDDiyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDDiyManager.swift; sourceTree = "<group>"; };
+		B2224D111D6D502B00EA3F5F /* JHB_HUDDiyProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDDiyProgressView.swift; sourceTree = "<group>"; };
+		B2224D121D6D502B00EA3F5F /* JHB_HUDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDManager.swift; sourceTree = "<group>"; };
+		B2224D131D6D502B00EA3F5F /* JHB_HUDProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDProgressView.swift; sourceTree = "<group>"; };
+		B2224D141D6D502B00EA3F5F /* JHB_HUDTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDTopViewController.swift; sourceTree = "<group>"; };
+		B2224D151D6D502B00EA3F5F /* JHB_HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDView.swift; sourceTree = "<group>"; };
+		B2224D1D1D6D504F00EA3F5F /* dropdown_anim_loading1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown_anim_loading1@2x.png"; sourceTree = "<group>"; };
+		B2224D1E1D6D504F00EA3F5F /* dropdown_anim_loading2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown_anim_loading2@2x.png"; sourceTree = "<group>"; };
+		B2224D1F1D6D504F00EA3F5F /* dropdown_anim_loading3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown_anim_loading3@2x.png"; sourceTree = "<group>"; };
+		B2224D201D6D504F00EA3F5F /* dropdown_anim_loading4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown_anim_loading4@2x.png"; sourceTree = "<group>"; };
+		B2224D211D6D504F00EA3F5F /* dropdown_anim_loading5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown_anim_loading5@2x.png"; sourceTree = "<group>"; };
+		B2224D221D6D504F00EA3F5F /* dropdown_anim_loading6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown_anim_loading6@2x.png"; sourceTree = "<group>"; };
+		B2224D231D6D504F00EA3F5F /* dropdown_anim_loading7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown_anim_loading7@2x.png"; sourceTree = "<group>"; };
+		B2224D241D6D504F00EA3F5F /* dropdown_anim_loading8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropdown_anim_loading8@2x.png"; sourceTree = "<group>"; };
+		B2224D251D6D504F00EA3F5F /* TaiChi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TaiChi@2x.png"; sourceTree = "<group>"; };
+		B2224D271D6D504F00EA3F5F /* ExampleAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAppDelegate.swift; sourceTree = "<group>"; };
+		B2224D281D6D504F00EA3F5F /* ExampleMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleMainController.swift; sourceTree = "<group>"; };
+		B2224D291D6D504F00EA3F5F /* ExampleNaviController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleNaviController.swift; sourceTree = "<group>"; };
+		B2224D2B1D6D504F00EA3F5F /* ExampleDiyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleDiyController.swift; sourceTree = "<group>"; };
+		B2224D2C1D6D504F00EA3F5F /* ExampleDiyDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleDiyDetailController.swift; sourceTree = "<group>"; };
+		B2224D2D1D6D504F00EA3F5F /* ExampleDiyNDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleDiyNDetailController.swift; sourceTree = "<group>"; };
+		B2224D2E1D6D504F00EA3F5F /* ExampleRegularController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleRegularController.swift; sourceTree = "<group>"; };
+		B2224D2F1D6D504F00EA3F5F /* ExampleRegularDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleRegularDetailController.swift; sourceTree = "<group>"; };
 		B274ECB41D581BC400EEB906 /* JHB_HUDViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JHB_HUDViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B274ECB71D581BC400EEB906 /* ExampleAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAppDelegate.swift; sourceTree = "<group>"; };
-		B274ECB91D581BC400EEB906 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		B274ECBC1D581BC400EEB906 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B274ECBF1D581BC400EEB906 /* JHB_HUDViewExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JHB_HUDViewExample.xcdatamodel; sourceTree = "<group>"; };
 		B274ECC11D581BC400EEB906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B274ECC41D581BC400EEB906 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B274ECC61D581BC400EEB906 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B274ECCD1D581C9800EEB906 /* JHB_HUDProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDProgressView.swift; sourceTree = "<group>"; };
-		B274ECCE1D581C9800EEB906 /* JHB_HUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JHB_HUDView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,10 +79,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B2224D0F1D6D502B00EA3F5F /* JHB_HUDView */ = {
+			isa = PBXGroup;
+			children = (
+				B2224D101D6D502B00EA3F5F /* JHB_HUDDiyManager.swift */,
+				B2224D111D6D502B00EA3F5F /* JHB_HUDDiyProgressView.swift */,
+				B2224D121D6D502B00EA3F5F /* JHB_HUDManager.swift */,
+				B2224D131D6D502B00EA3F5F /* JHB_HUDProgressView.swift */,
+				B2224D141D6D502B00EA3F5F /* JHB_HUDTopViewController.swift */,
+				B2224D151D6D502B00EA3F5F /* JHB_HUDView.swift */,
+			);
+			path = JHB_HUDView;
+			sourceTree = "<group>";
+		};
+		B2224D1C1D6D504F00EA3F5F /* dropdown_anim_loading */ = {
+			isa = PBXGroup;
+			children = (
+				B2224D1D1D6D504F00EA3F5F /* dropdown_anim_loading1@2x.png */,
+				B2224D1E1D6D504F00EA3F5F /* dropdown_anim_loading2@2x.png */,
+				B2224D1F1D6D504F00EA3F5F /* dropdown_anim_loading3@2x.png */,
+				B2224D201D6D504F00EA3F5F /* dropdown_anim_loading4@2x.png */,
+				B2224D211D6D504F00EA3F5F /* dropdown_anim_loading5@2x.png */,
+				B2224D221D6D504F00EA3F5F /* dropdown_anim_loading6@2x.png */,
+				B2224D231D6D504F00EA3F5F /* dropdown_anim_loading7@2x.png */,
+				B2224D241D6D504F00EA3F5F /* dropdown_anim_loading8@2x.png */,
+				B2224D251D6D504F00EA3F5F /* TaiChi@2x.png */,
+			);
+			path = dropdown_anim_loading;
+			sourceTree = "<group>";
+		};
+		B2224D261D6D504F00EA3F5F /* ExampleMainPart */ = {
+			isa = PBXGroup;
+			children = (
+				B2224D271D6D504F00EA3F5F /* ExampleAppDelegate.swift */,
+				B2224D281D6D504F00EA3F5F /* ExampleMainController.swift */,
+				B2224D291D6D504F00EA3F5F /* ExampleNaviController.swift */,
+			);
+			path = ExampleMainPart;
+			sourceTree = "<group>";
+		};
+		B2224D2A1D6D504F00EA3F5F /* ExampleTwoPart */ = {
+			isa = PBXGroup;
+			children = (
+				B2224D2B1D6D504F00EA3F5F /* ExampleDiyController.swift */,
+				B2224D2C1D6D504F00EA3F5F /* ExampleDiyDetailController.swift */,
+				B2224D2D1D6D504F00EA3F5F /* ExampleDiyNDetailController.swift */,
+				B2224D2E1D6D504F00EA3F5F /* ExampleRegularController.swift */,
+				B2224D2F1D6D504F00EA3F5F /* ExampleRegularDetailController.swift */,
+			);
+			path = ExampleTwoPart;
+			sourceTree = "<group>";
+		};
 		B274ECAB1D581BC400EEB906 = {
 			isa = PBXGroup;
 			children = (
-				B274ECCC1D581C9800EEB906 /* JHB_HUDView */,
+				B2224D0F1D6D502B00EA3F5F /* JHB_HUDView */,
 				B274ECB61D581BC400EEB906 /* JHB_HUDViewExample */,
 				B274ECB51D581BC400EEB906 /* Products */,
 			);
@@ -63,8 +150,9 @@
 		B274ECB61D581BC400EEB906 /* JHB_HUDViewExample */ = {
 			isa = PBXGroup;
 			children = (
-				B274ECB71D581BC400EEB906 /* ExampleAppDelegate.swift */,
-				B274ECB91D581BC400EEB906 /* ExampleViewController.swift */,
+				B2224D1C1D6D504F00EA3F5F /* dropdown_anim_loading */,
+				B2224D261D6D504F00EA3F5F /* ExampleMainPart */,
+				B2224D2A1D6D504F00EA3F5F /* ExampleTwoPart */,
 				B274ECBB1D581BC400EEB906 /* Main.storyboard */,
 				B274ECC11D581BC400EEB906 /* Assets.xcassets */,
 				B274ECC31D581BC400EEB906 /* LaunchScreen.storyboard */,
@@ -72,16 +160,6 @@
 				B274ECBE1D581BC400EEB906 /* JHB_HUDViewExample.xcdatamodeld */,
 			);
 			path = JHB_HUDViewExample;
-			sourceTree = "<group>";
-		};
-		B274ECCC1D581C9800EEB906 /* JHB_HUDView */ = {
-			isa = PBXGroup;
-			children = (
-				B268CE391D5DBEC600FA7281 /* JHB_HUDManager.swift */,
-				B274ECCD1D581C9800EEB906 /* JHB_HUDProgressView.swift */,
-				B274ECCE1D581C9800EEB906 /* JHB_HUDView.swift */,
-			);
-			path = JHB_HUDView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,9 +220,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2224D311D6D504F00EA3F5F /* dropdown_anim_loading2@2x.png in Resources */,
+				B2224D351D6D504F00EA3F5F /* dropdown_anim_loading6@2x.png in Resources */,
 				B274ECC51D581BC400EEB906 /* LaunchScreen.storyboard in Resources */,
+				B2224D361D6D504F00EA3F5F /* dropdown_anim_loading7@2x.png in Resources */,
+				B2224D331D6D504F00EA3F5F /* dropdown_anim_loading4@2x.png in Resources */,
+				B2224D301D6D504F00EA3F5F /* dropdown_anim_loading1@2x.png in Resources */,
 				B274ECC21D581BC400EEB906 /* Assets.xcassets in Resources */,
+				B2224D341D6D504F00EA3F5F /* dropdown_anim_loading5@2x.png in Resources */,
+				B2224D381D6D504F00EA3F5F /* TaiChi@2x.png in Resources */,
 				B274ECBD1D581BC400EEB906 /* Main.storyboard in Resources */,
+				B2224D371D6D504F00EA3F5F /* dropdown_anim_loading8@2x.png in Resources */,
+				B2224D321D6D504F00EA3F5F /* dropdown_anim_loading3@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,12 +242,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B274ECD11D581C9800EEB906 /* JHB_HUDView.swift in Sources */,
-				B274ECD01D581C9800EEB906 /* JHB_HUDProgressView.swift in Sources */,
-				B274ECBA1D581BC400EEB906 /* ExampleViewController.swift in Sources */,
+				B2224D3B1D6D504F00EA3F5F /* ExampleNaviController.swift in Sources */,
+				B2224D3A1D6D504F00EA3F5F /* ExampleMainController.swift in Sources */,
+				B2224D171D6D502B00EA3F5F /* JHB_HUDDiyProgressView.swift in Sources */,
 				B274ECC01D581BC400EEB906 /* JHB_HUDViewExample.xcdatamodeld in Sources */,
-				B268CE3A1D5DBEC600FA7281 /* JHB_HUDManager.swift in Sources */,
-				B274ECB81D581BC400EEB906 /* ExampleAppDelegate.swift in Sources */,
+				B2224D3C1D6D504F00EA3F5F /* ExampleDiyController.swift in Sources */,
+				B2224D1B1D6D502B00EA3F5F /* JHB_HUDView.swift in Sources */,
+				B2224D391D6D504F00EA3F5F /* ExampleAppDelegate.swift in Sources */,
+				B2224D3F1D6D504F00EA3F5F /* ExampleRegularController.swift in Sources */,
+				B2224D181D6D502B00EA3F5F /* JHB_HUDManager.swift in Sources */,
+				B2224D401D6D504F00EA3F5F /* ExampleRegularDetailController.swift in Sources */,
+				B2224D3D1D6D504F00EA3F5F /* ExampleDiyDetailController.swift in Sources */,
+				B2224D191D6D502B00EA3F5F /* JHB_HUDProgressView.swift in Sources */,
+				B2224D3E1D6D504F00EA3F5F /* ExampleDiyNDetailController.swift in Sources */,
+				B2224D161D6D502B00EA3F5F /* JHB_HUDDiyManager.swift in Sources */,
+				B2224D1A1D6D502B00EA3F5F /* JHB_HUDTopViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

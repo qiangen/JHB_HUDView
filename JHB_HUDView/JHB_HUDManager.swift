@@ -8,6 +8,8 @@ import UIKit
 
 public class JHB_HUDManager: UIView {
     // MARK: parameters
+    private  var windowsTemp: [UIWindow] = []
+    private  var timer: dispatch_source_t?
     let SCREEN_WIDTH  = UIScreen.mainScreen().bounds.size.width
     let SCREEN_HEIGHT = UIScreen.mainScreen().bounds.size.height
     /*透明背景*//*Clear Background*/
@@ -21,12 +23,24 @@ public class JHB_HUDManager: UIView {
     // 定义当前类型
     var type : NSInteger = 0
     
+    
+    var PreOrientation = UIDevice.currentDevice().orientation
+    var InitOrientation = UIDevice.currentDevice().orientation
+    
     // MARK: - Interface
     override init(frame: CGRect) {
         super.init(frame: UIScreen.mainScreen().bounds)
         self.setSubViews()
         self.addSubview(self.bgClearView);
         self.addSubview(self.coreView);
+        self.registerDeviceOrientationNotification()
+        
+        PreOrientation = UIDevice.currentDevice().orientation
+        InitOrientation = UIDevice.currentDevice().orientation
+
+        if PreOrientation != .Portrait {
+            NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUDTopVcCannotRotated", object: self.PreOrientation.hashValue, userInfo: nil)
+        }
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -119,7 +133,7 @@ public class JHB_HUDManager: UIView {
         UIView.animateWithDuration(0.65, animations: {
             self.coreView.alpha = al
         }) { (true) in
-            self.removeFromSuperview()
+            self.SuperInitStatus()
         }
     }
     
@@ -144,7 +158,7 @@ public class JHB_HUDManager: UIView {
             self.coreView.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2 + value)
             self.setNeedsDisplay()
         }) { (true) in
-            self.removeFromSuperview()
+             self.SuperInitStatus()
         }
         
     }
@@ -170,7 +184,7 @@ public class JHB_HUDManager: UIView {
             self.coreView.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2 + value, UIScreen.mainScreen().bounds.size.height / 2)
             self.setNeedsDisplay()
         }) { (true) in
-            self.removeFromSuperview()
+             self.SuperInitStatus()
         }
         
     }
@@ -197,7 +211,7 @@ public class JHB_HUDManager: UIView {
             self.coreView.center = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2 , UIScreen.mainScreen().bounds.size.height / 2)
             self.setNeedsDisplay()
         }) { (true) in
-            self.removeFromSuperview()
+             self.SuperInitStatus()
         }
         
     }
@@ -235,7 +249,6 @@ public class JHB_HUDManager: UIView {
             self.EffectRemoveAboutInsideAndOutside(.kHUDTypeScaleFromOutsideToInside)
             break
         default:
-            
             break
         }
         
@@ -257,13 +270,13 @@ public class JHB_HUDManager: UIView {
         }
         
         if kIfNeedEffect == false {
-            self.removeFromSuperview()
+            self.SuperInitStatus()
         }else if kIfNeedEffect == true {
             UIView.animateWithDuration(0.65, animations: {
                 self.coreView.alpha = 0
                 self.coreView.center = CGPointMake(self.bgClearView.bounds.size.width / 2, self.bgClearView.bounds.size.height / 2)
             }) { (true) in
-                self.removeFromSuperview()
+                self.SuperInitStatus()
             }
         }
     }
@@ -287,7 +300,7 @@ public class JHB_HUDManager: UIView {
             self.coreView.alpha = 0
             self.coreView.center = CGPointMake(self.bgClearView.bounds.size.width / 2, self.bgClearView.bounds.size.height / 2 + value)
         }) { (true) in
-            self.removeFromSuperview()
+            self.SuperInitStatus()
         }
     }
     
@@ -311,7 +324,7 @@ public class JHB_HUDManager: UIView {
             self.coreView.alpha = 0
             self.coreView.center = CGPointMake(self.bgClearView.bounds.size.width / 2 + value, self.bgClearView.bounds.size.height / 2)
         }) { (true) in
-            self.removeFromSuperview()
+            self.SuperInitStatus()
         }
     }
     
@@ -336,7 +349,7 @@ public class JHB_HUDManager: UIView {
             self.coreView.transform = CGAffineTransformScale(self.coreView.transform, 1/kScaleValue,1/kScaleValue)
             self.coreView.center = CGPointMake(self.bgClearView.bounds.size.width / 2, self.bgClearView.bounds.size.height / 2)
         }) { (true) in
-            self.removeFromSuperview()
+            self.SuperInitStatus()
         }
     }
     
@@ -345,6 +358,130 @@ public class JHB_HUDManager: UIView {
         super.layoutSubviews()
         
     }
+    
+    
+    
+    // MARK: About Notification
+    // 1⃣️remove
+    private func RemoveNotification() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // 2⃣️register
+    private func registerDeviceOrientationNotification() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.transformWindow(_:)), name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    // transform
+    @objc private func transformWindow(notification: NSNotification) {
+        var rotation: CGFloat = 0
+        if self.InitOrientation == .Portrait{
+            if self.PreOrientation == .Portrait {
+                switch UIDevice.currentDevice().orientation {
+                case .Portrait:
+                    rotation = 0
+                case .PortraitUpsideDown:
+                    rotation = CGFloat(M_PI)
+                case .LandscapeLeft:
+                    rotation = CGFloat(M_PI/2)
+                case .LandscapeRight:
+                    rotation = CGFloat(M_PI + (M_PI/2))
+                default:
+                    break
+                }
+            }else if self.PreOrientation == .PortraitUpsideDown {
+                switch UIDevice.currentDevice().orientation {
+                case .Portrait:
+                    rotation = 0
+                case .PortraitUpsideDown:
+                    rotation = CGFloat((M_PI/2))
+                case .LandscapeLeft:
+                    rotation = CGFloat((M_PI/2))
+                case .LandscapeRight:
+                    rotation = CGFloat(M_PI + M_PI/2)
+                default:
+                    break
+                }
+            }else if self.PreOrientation == .LandscapeLeft {
+                switch UIDevice.currentDevice().orientation {
+                case .Portrait:
+                    rotation = 0
+                case .PortraitUpsideDown:
+                    rotation = CGFloat(M_PI)
+                case .LandscapeLeft:
+                    rotation = 0
+                case .LandscapeRight:
+                    rotation = CGFloat(M_PI + M_PI/2)
+                default:
+                    break
+                }
+            }else if self.PreOrientation == .LandscapeRight {
+                switch UIDevice.currentDevice().orientation {
+                case .Portrait:
+                    rotation = 0
+                case .PortraitUpsideDown:
+                    rotation = CGFloat(M_PI)
+                case .LandscapeLeft:
+                    rotation = CGFloat(M_PI/2)
+                case .LandscapeRight:
+                    rotation = 0
+                default:
+                    break
+                }
+            }else if self.PreOrientation == .FaceDown ||  self.PreOrientation == .FaceDown {
+                return
+            }
+        }else if self.InitOrientation == .LandscapeLeft || self.InitOrientation == .LandscapeRight ||  self.InitOrientation == .PortraitUpsideDown{
+            return
+        }
+        
+        self.PreOrientation = UIDevice.currentDevice().orientation
+        windowsTemp.forEach {_ in
+            window!.center = self.getCenter()
+            window!.transform = CGAffineTransformMakeRotation(rotation)
+        }
+    }
+    
+    // center
+    private  func getCenter() -> CGPoint {
+        let rv = UIApplication.sharedApplication().keyWindow?.subviews.first as UIView!
+        if self.InitOrientation == .Portrait{
+            if self.PreOrientation == .Portrait {
+                return rv.center
+            }else {
+                if rv.bounds.width > rv.bounds.height {
+                    return CGPoint(x: rv.bounds.height/2, y: rv.bounds.width/2)
+                }
+            }
+        }else if self.InitOrientation == .LandscapeLeft {
+            if self.PreOrientation == .LandscapeLeft || self.PreOrientation == .LandscapeRight {
+                return rv.center
+            }else {
+                if rv.bounds.width > rv.bounds.height {
+                    return CGPoint(x: rv.bounds.height/2, y: rv.bounds.width/2)
+                }
+            }
+        }else if self.InitOrientation == .LandscapeRight {
+            if self.PreOrientation == .LandscapeLeft || self.PreOrientation == .LandscapeRight {
+                return rv.center
+            }else {
+                if rv.bounds.width > rv.bounds.height {
+                    return CGPoint(x: rv.bounds.height/2, y: rv.bounds.width/2)
+                }
+            }
+        }
+        return rv.center
+        
+    }
+    // dismiss
+    @objc private func dismiss() {
+        var timer: dispatch_source_t?
+        if let _ = timer {
+            dispatch_source_cancel(timer!)
+            timer = nil
+        }
+        windowsTemp.removeAll(keepCapacity: false)
+    }
+
     
 }
 
@@ -357,7 +494,7 @@ public extension JHB_HUDManager{
         self.coreView.msgLabel.hidden = true
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - 80) / 2, (SCREEN_HEIGHT - 80) / 2, 80, 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 60)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         /*实现动画*/
         UIView.animateWithDuration(0.65) {
@@ -372,34 +509,22 @@ public extension JHB_HUDManager{
         switch HudType {
         case .kHUDTypeDefaultly:
             self.EffectShowProgressAboutTopAndBottom(.kHUDTypeShowFromBottomToTop)
-            break
         case .kHUDTypeShowImmediately:
             self.EffectShowProgressAboutStablePositon(.kHUDTypeShowImmediately)
-            break
         case .kHUDTypeShowSlightly:
             self.EffectShowProgressAboutStablePositon(.kHUDTypeShowSlightly)
-            break
         case .kHUDTypeShowFromBottomToTop:
             self.EffectShowProgressAboutTopAndBottom(.kHUDTypeShowFromBottomToTop)
-            break
         case .kHUDTypeShowFromTopToBottom:
             self.EffectShowProgressAboutTopAndBottom(.kHUDTypeShowFromTopToBottom)
-            break
         case .kHUDTypeShowFromLeftToRight:
             self.EffectShowProgressAboutLeftAndRight(.kHUDTypeShowFromLeftToRight)
-            break
         case .kHUDTypeShowFromRightToLeft:
             self.EffectShowProgressAboutLeftAndRight(.kHUDTypeShowFromRightToLeft)
-            break
         case .kHUDTypeScaleFromInsideToOutside:
             self.EffectShowProgressAboutInsideAndOutside(.kHUDTypeScaleFromInsideToOutside)
-            break
         case .kHUDTypeScaleFromOutsideToInside:
             self.EffectShowProgressAboutInsideAndOutside(.kHUDTypeScaleFromOutsideToInside)
-            break
-        default:
-            
-            break
         }
     }
     // 1⃣️原位置不变化
@@ -424,7 +549,7 @@ public extension JHB_HUDManager{
         self.coreView.msgLabel.hidden = true
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - 80) / 2, (SCREEN_HEIGHT - 80) / 2, 80, 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 )
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         if kIfNeedEffect == false {
         }else if kIfNeedEffect == true {
@@ -454,7 +579,7 @@ public extension JHB_HUDManager{
         self.coreView.msgLabel.hidden = true
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - 80) / 2, (SCREEN_HEIGHT - 80) / 2, 80, 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - value)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         /*实现动画*/
         UIView.animateWithDuration(0.65) {
@@ -483,7 +608,7 @@ public extension JHB_HUDManager{
         self.coreView.msgLabel.hidden = true
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - 80) / 2, (SCREEN_HEIGHT - 80) / 2, 80, 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2 + value, SCREEN_HEIGHT / 2)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         /*实现动画*/
         UIView.animateWithDuration(0.65) {
@@ -516,7 +641,7 @@ public extension JHB_HUDManager{
         self.coreView.msgLabel.hidden = true
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - kInitValue) / 2, (SCREEN_HEIGHT - kInitValue) / 2, kInitValue, kInitValue)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         /*实现动画*/
         UIView.animateWithDuration(0.65){
@@ -544,7 +669,7 @@ public extension JHB_HUDManager{
         NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUD_haveMsg", object: nil)
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 80) / 2,msgLabelWidth + 2*kMargin , 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 60)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         UIView.animateWithDuration(0.65) {
             self.coreView.alpha = 1
@@ -559,34 +684,22 @@ public extension JHB_HUDManager{
         switch HudType {
         case .kHUDTypeDefaultly:
             self.EffectShowProgressMsgsAboutTopAndBottom(msgs,type: .kHUDTypeShowFromBottomToTop)
-            break
         case .kHUDTypeShowImmediately:
             self.EffectShowProgressMsgsAboutStablePosition(msgs, type: .kHUDTypeShowImmediately)
-            break
         case .kHUDTypeShowSlightly:
             self.EffectShowProgressMsgsAboutStablePosition(msgs, type: .kHUDTypeShowSlightly)
-            break
         case .kHUDTypeShowFromBottomToTop:
             self.EffectShowProgressMsgsAboutTopAndBottom(msgs,type: .kHUDTypeShowFromBottomToTop)
-            break
         case .kHUDTypeShowFromTopToBottom:
             self.EffectShowProgressMsgsAboutTopAndBottom(msgs,type:.kHUDTypeShowFromTopToBottom)
-            break
         case .kHUDTypeShowFromLeftToRight:
             self.EffectShowProgressMsgsAboutLeftAndRight(msgs, type: .kHUDTypeShowFromLeftToRight)
-            break
         case .kHUDTypeShowFromRightToLeft:
             self.EffectShowProgressMsgsAboutLeftAndRight(msgs, type: .kHUDTypeShowFromRightToLeft)
-            break
         case .kHUDTypeScaleFromInsideToOutside:
             self.EffectShowProgressMsgsAboutInsideAndOutside(msgs, type: .kHUDTypeScaleFromInsideToOutside)
-            break
         case .kHUDTypeScaleFromOutsideToInside:
             self.EffectShowProgressMsgsAboutInsideAndOutside(msgs, type: .kHUDTypeScaleFromOutsideToInside)
-            break
-        default:
-            
-            break
         }
     }
     
@@ -618,7 +731,7 @@ public extension JHB_HUDManager{
         NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUD_haveMsg", object: nil)
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 80) / 2,msgLabelWidth + 2*kMargin , 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         UIView.animateWithDuration(0.65) {
             self.coreView.alpha = 1
@@ -660,7 +773,7 @@ public extension JHB_HUDManager{
         NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUD_haveMsg", object: nil)
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 80) / 2,msgLabelWidth + 2*kMargin , 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + value)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         UIView.animateWithDuration(0.65) {
             self.coreView.alpha = 1
@@ -699,7 +812,7 @@ public extension JHB_HUDManager{
         NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUD_haveMsg", object: nil)
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 80) / 2,msgLabelWidth + 2*kMargin , 80)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2 + value, SCREEN_HEIGHT / 2)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         UIView.animateWithDuration(0.65) {
             self.coreView.alpha = 1
@@ -747,10 +860,7 @@ public extension JHB_HUDManager{
         
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - iniHeightValue) / 2,iniWidthValue , iniHeightValue)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-        
-        
-        
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         UIView.animateWithDuration(0.65) {
             self.coreView.alpha = 1
@@ -801,7 +911,7 @@ public extension JHB_HUDManager{
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake(KCore, (SCREEN_HEIGHT - 60) / 2,SCREEN_WIDTH - KCore*2  , msgLabelHeight+20)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 60)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         self.coreView.msgLabelWidth = msgLabelWidth
         self.coreView.msgLabelHeight = msgLabelHeight
@@ -816,34 +926,22 @@ public extension JHB_HUDManager{
         switch HudType {
         case .kHUDTypeDefaultly:
             self.EffectShowMultiMsgsAboutTopAndBottom(msgs,coreInSet: coreInSet,labelInSet: labelInSet,delay: delay,type: .kHUDTypeShowFromBottomToTop)
-            break
         case .kHUDTypeShowImmediately:
             self.EffectShowMultiMsgsAboutStablePosition(msgs, coreInSet: coreInSet, labelInSet: labelInSet, delay: delay, type: .kHUDTypeShowImmediately)
-            break
         case .kHUDTypeShowSlightly:
             self.EffectShowMultiMsgsAboutStablePosition(msgs, coreInSet: coreInSet, labelInSet: labelInSet, delay: delay, type: .kHUDTypeShowSlightly)
-            break
         case .kHUDTypeShowFromBottomToTop:
             self.EffectShowMultiMsgsAboutTopAndBottom(msgs,coreInSet: coreInSet,labelInSet: labelInSet,delay: delay,type: .kHUDTypeShowFromBottomToTop)
-            break
         case .kHUDTypeShowFromTopToBottom:
             self.EffectShowMultiMsgsAboutTopAndBottom(msgs,coreInSet: coreInSet,labelInSet: labelInSet,delay: delay,type: .kHUDTypeShowFromTopToBottom)
-            break
         case .kHUDTypeShowFromLeftToRight:
             self.EffectShowMultiMsgsAboutLeftAndRight(msgs, coreInSet: coreInSet, labelInSet: labelInSet, delay: delay, type: .kHUDTypeShowFromLeftToRight)
-            break
         case .kHUDTypeShowFromRightToLeft:
             self.EffectShowMultiMsgsAboutLeftAndRight(msgs, coreInSet: coreInSet, labelInSet: labelInSet, delay: delay, type: .kHUDTypeShowFromRightToLeft)
-            break
         case .kHUDTypeScaleFromInsideToOutside:
             self.EffectShowMultiMsgsAboutInsideAndOutside(msgs, coreInSet: coreInSet, labelInSet: labelInSet, delay: delay, type: .kHUDTypeScaleFromInsideToOutside)
-            break
         case .kHUDTypeScaleFromOutsideToInside:
             self.EffectShowMultiMsgsAboutInsideAndOutside(msgs, coreInSet: coreInSet, labelInSet: labelInSet, delay: delay, type: .kHUDTypeScaleFromOutsideToInside)
-            break
-        default:
-            
-            break
         }
         
     }
@@ -888,7 +986,7 @@ public extension JHB_HUDManager{
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake(KCore, (SCREEN_HEIGHT - 60) / 2,SCREEN_WIDTH - KCore*2  , msgLabelHeight+20)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         self.coreView.msgLabelWidth = msgLabelWidth
         self.coreView.msgLabelHeight = msgLabelHeight
@@ -939,7 +1037,7 @@ public extension JHB_HUDManager{
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake(KCore, (SCREEN_HEIGHT - 60) / 2,SCREEN_WIDTH - KCore*2  , msgLabelHeight+20)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + value)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         self.coreView.msgLabelWidth = msgLabelWidth
         self.coreView.msgLabelHeight = msgLabelHeight
@@ -990,7 +1088,7 @@ public extension JHB_HUDManager{
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake(KCore, (SCREEN_HEIGHT - 60) / 2,SCREEN_WIDTH - KCore*2  , msgLabelHeight+40)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2 + value, SCREEN_HEIGHT / 2)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         self.coreView.msgLabelWidth = msgLabelWidth
         self.coreView.msgLabelHeight = msgLabelHeight
@@ -1050,7 +1148,7 @@ public extension JHB_HUDManager{
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake(KCore, (SCREEN_HEIGHT - iniWidthValue) / 2,iniWidthValue , iniHeightValue+20)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
+        self.ResetWindowPosition()
         
         self.coreView.msgLabelWidth = msgLabelWidth
         self.coreView.msgLabelHeight = msgLabelHeight
@@ -1089,8 +1187,7 @@ public extension JHB_HUDManager{
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 60) / 2,msgLabelWidth + 2*kMargin , 60)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 60)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
-        
+        self.ResetWindowPosition()
         
         self.coreView.msgLabelWidth = msgLabelWidth + 10
         self.coreView.msgLabelHeight = msgLabelHeight
@@ -1105,34 +1202,22 @@ public extension JHB_HUDManager{
         switch HudType {
         case .kHUDTypeDefaultly:
             self.EffectShowMsgsAboutTopAndBottom(msgs,type: .kHUDTypeShowFromBottomToTop)
-            break
         case .kHUDTypeShowImmediately:
             self.EffectShowMsgsAboutStablePosition(msgs, type: .kHUDTypeShowImmediately)
-            break
         case .kHUDTypeShowSlightly:
             self.EffectShowMsgsAboutStablePosition(msgs, type: .kHUDTypeShowSlightly)
-            break
         case .kHUDTypeShowFromBottomToTop:
             self.EffectShowMsgsAboutTopAndBottom(msgs,type: .kHUDTypeShowFromBottomToTop)
-            break
         case .kHUDTypeShowFromTopToBottom:
             self.EffectShowMsgsAboutTopAndBottom(msgs,type:.kHUDTypeShowFromTopToBottom)
-            break
         case .kHUDTypeShowFromLeftToRight:
             self.EffectShowMsgsAboutLeftAndRight(msgs, type: .kHUDTypeShowFromLeftToRight)
-            break
         case .kHUDTypeShowFromRightToLeft:
             self.EffectShowMsgsAboutLeftAndRight(msgs, type: .kHUDTypeShowFromRightToLeft)
-            break
         case .kHUDTypeScaleFromInsideToOutside:
             self.EffectShowMsgsAboutInsideAndOutside(msgs, type: .kHUDTypeScaleFromInsideToOutside)
-            break
         case .kHUDTypeScaleFromOutsideToInside:
             self.EffectShowMsgsAboutInsideAndOutside(msgs, type: .kHUDTypeScaleFromOutsideToInside)
-            break
-        default:
-            
-            break
         }
     }
     
@@ -1165,8 +1250,7 @@ public extension JHB_HUDManager{
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 60) / 2,msgLabelWidth + 2*kMargin , 60)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 )
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
-        
+        self.ResetWindowPosition()
         
         self.coreView.msgLabelWidth = msgLabelWidth-20
         self.coreView.msgLabelHeight = msgLabelHeight
@@ -1205,8 +1289,7 @@ public extension JHB_HUDManager{
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 60) / 2,msgLabelWidth + 2*kMargin , 60)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + value)
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
-        
+        self.ResetWindowPosition()
         
         self.coreView.msgLabelWidth = msgLabelWidth-20
         self.coreView.msgLabelHeight = msgLabelHeight
@@ -1245,8 +1328,7 @@ public extension JHB_HUDManager{
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - msgLabelWidth) / 2, (SCREEN_HEIGHT - 60) / 2,msgLabelWidth + 2*kMargin , 60)
         self.coreView.center = CGPointMake(SCREEN_WIDTH / 2 + value, SCREEN_HEIGHT / 2 )
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
-        
+        self.ResetWindowPosition()
         
         self.coreView.msgLabelWidth = msgLabelWidth-20
         self.coreView.msgLabelHeight = msgLabelHeight
@@ -1292,9 +1374,8 @@ public extension JHB_HUDManager{
         
         self.coreView.actView.stopAnimating()
         self.coreView.frame = CGRectMake((SCREEN_WIDTH - iniWidthValue) / 2, (SCREEN_HEIGHT - 60) / 2,iniWidthValue + 2*kMargin , 60)
-        self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 )
-        UIApplication.sharedApplication().keyWindow?.addSubview(self)
-        
+        self.coreView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+        self.ResetWindowPosition()
         NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUD_onlyAMsgShowWithScale", object: kScaleValue)
         UIView.animateWithDuration(0.65, animations: {
             self.coreView.alpha = 1
@@ -1315,4 +1396,26 @@ public extension JHB_HUDManager{
         self.hideProgress()
     }
     
+    
+    /*************➕保持适应屏幕旋转前提下实现移除➕************/
+    
+    func SuperInitStatus() {
+        self.removeFromSuperview()
+        self.RemoveNotification()
+        self.dismiss()
+        InitOrientation = UIDevice.currentDevice().orientation
+        NSNotificationCenter.defaultCenter().postNotificationName("JHB_HUDTopVcCanRotated", object: nil, userInfo: nil)
+    }
+    /*************➕保持适应屏幕旋转前提下实现添加➕************/
+    func ResetWindowPosition() {
+        let window = UIWindow()
+        window.backgroundColor = UIColor.clearColor()
+        window.frame = CGRectMake(0, 0, (UIApplication.sharedApplication().keyWindow?.bounds.size.width)!,(UIApplication.sharedApplication().keyWindow?.bounds.size.height)!)
+        window.windowLevel = UIWindowLevelAlert
+        window.center = self.getCenter()
+        window.hidden = false
+        window.addSubview(self)
+        windowsTemp.append(window)
+    }
+
 }
