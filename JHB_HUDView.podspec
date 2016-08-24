@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "JHB_HUDView"
-  s.version       = "0.0.7"
+  s.version       = "0.1.0"
   s.summary       = "Provide Many Effect-types!"
   s.description   =  "This is a plugin to show your application is in-progress and There are some different relizations offerred! You can choose the related-one and copy it to your projectfile ,then use it!"
   s.homepage      = "https://github.com/BruceFight/JHB_HUDView"
